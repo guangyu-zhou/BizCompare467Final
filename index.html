@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- http://stackoverflow.com/questions/3324573/filtering-google-maps-markers-with-a-checkbox -->
+<html>
+
+
+<head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/awesome-bootstrap-checkbox.css">
+  <script src="render_map.js"></script>  
+
+  <style>
+    #map {
+    margin: 20px;
+    height: 500px;
+    width: 100%;
+    }
+  </style>
+
+</head>
+
+
+
+<body>
+
+  <div class="well well-sm text-center" style="height: 600px;">
+      
+      <div id="map" style="margin-left: 10%;width: 60%;float:left;">
+      </div>
+
+      <br>
+      <form action="#" style="float:left; width:20%; margin: 1px;">         
+          <div class="well well-sm text-center">
+
+            <h3 style="color:gray;">Restaurants</h3>        
+            <div style="text-align:left;">
+              <input type="checkbox" class="category" id="allcuisines" style="margin: 2px;"/><span style="color: black; font-size: 15px;">All Restaurants</span><br>
+              <input type="checkbox" class="subcategory" id="asianfusion" style="margin: 2px;"/><span style="color: deepskyblue; font-size: 15px;">Asian Fusion</span><br>
+              <input type="checkbox" class="subcategory" id="latin" style="margin: 2px;"/><span style="color: purple; font-size: 15px;">Latin</span><br>
+              <input type="checkbox" class="subcategory" id="southern" style="margin: 2px;"/><span style="color: orchid; font-size: 15px;">Southern</span><br>
+              <input type="checkbox" class="subcategory" id="italian" style="margin: 2px;"/><span style="color: orangered; font-size: 15px;">Italian</span><br>
+              <input type="checkbox" class="subcategory" id="greek" style="margin: 2px;"/><span style="color: lightseagreen; font-size: 15px;">Greek</span><br>
+              <input type="checkbox" class="subcategory" id="mediterranean" style="margin: 2px;"/><span style="color: green; font-size: 15px;">Mediterranean</span><br>
+            </div>
+          </div>
+
+    </form>
+
+    <form action="#" style="width:20%; float:left;">              
+    <div class="well well-sm text-center">
+  
+      <h3 style="color:gray;">Activities</h3>
+        <div style="text-align:left;">
+        <input type="checkbox" class="category" id="allactivities" style="margin: 2px;"/><span style="color: black; font-size: 15px;">All Outdoor Activities</span><br>
+        <input type="checkbox" class="subcategory" id="scuba" style="margin: 2px;"/><span style="color: deeppink; font-size: 15px;">Scuba</span><br>
+        <input type="checkbox" class="subcategory" id="rafting" style="margin: 2px;"/><span style="color: royalblue; font-size: 15px;">Rafting</span><br>
+        <input type="checkbox" class="subcategory" id="surfing" style="margin: 2px;"/><span style="color: turquoise; font-size: 15px;">Surfing</span><br>
+        <input type="checkbox" class="subcategory" id="skydiving" style="margin: 2px;"/><span style="color: mediumvioletred; font-size: 15px;">Skydiving</span><br>
+        <input type="checkbox" class="subcategory" id="hiking" style="margin: 2px;"/><span style="color: violet; font-size: 15px;">Hiking</span><br>
+        <input type="checkbox" class="subcategory" id="beaches" style="margin: 2px;"/><span style="color: darksalmon; font-size: 15px;">Beaches</span><br>
+        <div>
+    </div>
+
+    </form>
+  </div>
+
+
+</body>
+</html>
+
+
