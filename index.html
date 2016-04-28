@@ -5,12 +5,15 @@
 
 
 <head>
-
+  <meta charset="UTF-8">
+    <!-- <title>Charts info graphic</title> -->
+  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
   <script src="js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/awesome-bootstrap-checkbox.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="render_map.js"></script>  
 
   <style>
@@ -27,9 +30,10 @@
 
 <body>
 
-  <div class="well well-sm text-center" style="height: 600px;">
+
+  <div class="well well-sm text-center" style="height: 600px; font-size: 20px">
       <h> BizCompare: User-preference based multi-perspective comparison of businesses on Yelp </h>
-      <div id="map" style="margin-left: 0%;width: 100%;float:left;">
+      <div id="map" style="margin-left: 5%;width: 90%;float:left;">
       </div>
 
       <!--       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
@@ -38,6 +42,120 @@
    
   </div>
 
+
+
+<div class="charts--container">
+  <ul>
+    <li class="chart">
+      <h3 class="chart--subHeadline">Chart 1</h3>
+      <h2 class="chart--headline">Rating Percent</h2>
+      <div id="pieChart">
+        <svg id="pieChartSVG">
+          
+          <script type="text/javascript">
+            var w = 1000;
+            var h = 500;
+            var dataset = [[],[],[],[],[]];
+
+            var color_hash = {0 : ["1.0", "#d79d91"],1 : ["2.0", "#6bb7c7"],2 : ["3.0", "#66CD00"],3 : ["4.0", "#e5e500"],4 : ["5.0", "#BF5FFF"],}                      
+
+          // Create SVG element
+            var svg = d3.select("#pieChartSVG")
+              .append("svg")
+              .attr("width", w)
+              .attr("height", h);
+
+          // add legend   
+            var legend = svg.append("g")
+            .attr("class", "legend")
+            // .attr("x", w - 65)
+            // .attr("y", 25)
+            .attr("x", 1200)
+            .attr("y", 25)
+            .attr("height", 100)
+            .attr("width", 100);
+
+            legend.selectAll('g').data(dataset)
+              .enter()
+              .append('g')
+              .each(function(d, i) {
+                var g = d3.select(this);
+                g.append("rect")
+                .attr("x", 870)
+                  // .attr("x", w - 65)
+                  .attr("y", (i+1)*25)
+                  .attr("width", 10)
+                  .attr("height", 10)
+                  .style("fill", color_hash[String(i)][1]);
+                
+                g.append("text")
+                .attr("x", 883)
+                 // .attr("x", w - 50)
+                  .attr("y", (i+1) * 25 + 8)
+                  .attr("height",30)
+                  .attr("width",100)
+                  .style("fill", color_hash[String(i)][1])
+                  .text(color_hash[String(i)][0]);
+              });
+  //         </script>
+
+          <defs>
+            <filter id='pieChartInsetShadow'>
+              <feOffset dx='0' dy='0'/>
+              <feGaussianBlur stdDeviation='3' result='offset-blur' />
+              <feComposite operator='out' in='SourceGraphic' in2='offset-blur' result='inverse' />
+              <feFlood flood-color='black' flood-opacity='1' result='color' />
+              <feComposite operator='in' in='color' in2='inverse' result='shadow' />
+              <feComposite operator='over' in='shadow' in2='SourceGraphic' />
+            </filter>
+            <filter id="pieChartDropShadow">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
+              <feOffset in="blur" dx="0" dy="3" result="offsetBlur" />
+              <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </li>
+    <li class="chart">
+      <h3 class="chart--subHeadline">Chart 2</h3>
+      <h2 class="chart--headline">Time VS Checkin</h2>
+      <div id="checkinChart">
+        <svg id="lineChartSVG" class="lineChart--svg">
+          <defs>
+            <linearGradient id="lineChart--gradientBackgroundArea" x1="0" x2="0" y1="0" y2="1">
+              <stop class="lineChart--gradientBackgroundArea--top" offset="0%" />
+              <stop class="lineChart--gradientBackgroundArea--bottom" offset="100%" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </li>
+    <li class="chart">
+      <h3 class="chart--subHeadline">Chart 3</h3>
+      <h2 class="chart--headline">Time vs RatingAvg</h2>
+      <div id="lineChart">
+        <svg id="lineChartSVG" class="lineChart--svg">
+          <defs>
+            <linearGradient id="lineChart--gradientBackgroundArea" x1="0" x2="0" y1="0" y2="1">
+              <stop class="lineChart--gradientBackgroundArea--top" offset="0%" />
+              <stop class="lineChart--gradientBackgroundArea--bottom" offset="100%" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </li>
+  </ul>
+</div>
+     <script src='http://d3js.org/d3.v3.min.js'></script>
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <script src="js/d3.legend.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+
+    <!-- <script src="js/index.js"></script> -->
 
 </body>
 </html>
